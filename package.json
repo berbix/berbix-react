@@ -16,6 +16,9 @@
     "react",
     "identity"
   ],
+  "files": [
+    "index.js"
+  ],
   "author": "Eric Levine <eric@berbix.com>",
   "license": "MIT",
   "bugs": {
