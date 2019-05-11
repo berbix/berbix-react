@@ -1,0 +1,34 @@
+{
+  "name": "berbix-react",
+  "version": "0.0.1",
+  "description": "React SDK for the Berbix Verify flow",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-file index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/berbix/berbix-react.git"
+  },
+  "keywords": [
+    "berbix",
+    "react",
+    "identity"
+  ],
+  "author": "Eric Levine <eric@berbix.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/berbix/berbix-react/issues"
+  },
+  "homepage": "https://github.com/berbix/berbix-react#readme",
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-transform-react-jsx": "^7.3.0"
+  }
+}
