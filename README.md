@@ -20,8 +20,8 @@ class ExampleComponent extends React.Component {
       <BerbixVerify
         clientId="your_client_id"
         role="your_role_key"
-        onComplete={{ value } => {
-          // send value to backend to fetch user verification data
+        onComplete={event => {
+          // send event.value to backend to fetch user verification data
         }}
       />
     );

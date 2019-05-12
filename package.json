@@ -4,8 +4,7 @@
   "description": "React SDK for the Berbix Verify flow",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-file index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src --out-file index.js"
   },
   "repository": {
     "type": "git",
