@@ -16,11 +16,15 @@ class BerbixVerify extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('message', this.handleMessage);
+    if (typeof(window) !== 'undefined') {
+      window.addEventListener('message', this.handleMessage);
+    }
   }
 
   componentWillUnmount() {
-    window.removeEventListener('message', this.handleMessage);
+    if (typeof(window) !== 'undefined') {
+      window.removeEventListener('message', this.handleMessage);
+    }
   }
 
   handleMessage(e) {
