@@ -69,9 +69,9 @@ class BerbixVerify extends React.Component {
       case 'sandbox':
         return 'https://verify.sandbox.berbix.com';
       case 'staging':
-        return 'https://verify.staging.berbix.com'
+        return 'https://verify.staging.berbix.com';
       default:
-        return 'https://verify.berbix.com'
+        return 'https://verify.berbix.com';
     }
   }
 
