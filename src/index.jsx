@@ -12,7 +12,6 @@ class BerbixVerify extends React.Component {
     };
 
     this.handleMessage = this.handleMessage.bind(this);
-    this.frameRef = React.createRef();
   }
 
   componentDidMount() {
@@ -96,7 +95,6 @@ class BerbixVerify extends React.Component {
     return (
       <iframe
         key={this.state.idx}
-        ref={this.frameRef}
         src={this.frameUrl()}
         style={{
           backgroundColor: 'transparent',
