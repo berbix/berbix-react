@@ -76,16 +76,17 @@ class BerbixVerify extends React.Component {
   }
 
   frameUrl() {
-    const { overrideUrl, version, clientId, role, email, phone, continuation } = this.props;
+    const { overrideUrl, version, clientId, role, email, phone, continuation, clientToken } = this.props;
     if (overrideUrl != null) {
       return overrideUrl;
     }
+    const token = clientToken || continuation;
     return (this.baseUrl() + '/' + version + '/verify') +
       ('?client_id=' + clientId) +
       ('&role=' + role) +
       (email ? '&email=' + encodeURIComponent(email) : '') +
       (phone ? '&phone=' + encodeURIComponent(phone) : '') +
-      (continuation ? '&continuation=' + continuation : '');
+      (token ? '&client_token=' + token : '');
   }
 
   render() {
@@ -128,6 +129,7 @@ BerbixVerify.propTypes = {
   email: PropTypes.string,
   phone: PropTypes.string,
   continuation: PropTypes.string,
+  clientToken: PropTypes.string,
 }
 
 BerbixVerify.defaultProps = {

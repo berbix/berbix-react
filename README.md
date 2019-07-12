@@ -46,6 +46,7 @@ BerbixVerify.propTypes = {
   email: PropTypes.string,
   phone: PropTypes.string,
   continuation: PropTypes.string,
+  clientToken: PropTypes.string,
 }
 ```
 
