@@ -1,6 +1,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
+const SDK_VERSION = '0.0.3';
+
 class BerbixVerify extends React.Component {
   constructor(props) {
     super(props);
@@ -86,7 +88,8 @@ class BerbixVerify extends React.Component {
       (template ? '&template=' + template : '') +
       (email ? '&email=' + encodeURIComponent(email) : '') +
       (phone ? '&phone=' + encodeURIComponent(phone) : '') +
-      (token ? '&client_token=' + token : '');
+      (token ? '&client_token=' + token : '') +
+      ('&sdk=BerbixReact-' + SDK_VERSION);
   }
 
   render() {
