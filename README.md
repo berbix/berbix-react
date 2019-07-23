@@ -19,7 +19,7 @@ class ExampleComponent extends React.Component {
     return (
       <BerbixVerify
         clientId="your_client_id"
-        role="your_role_key"
+        templateKey="your_template_key"
         onComplete={event => {
           // send event.value to backend to fetch user verification data
         }}
@@ -29,24 +29,24 @@ class ExampleComponent extends React.Component {
 }
 ```
 
-### Full propTypes
+### PropTypes
 
 ```js
 BerbixVerify.propTypes = {
-  onComplete: PropTypes.func.isRequired,
+  // Required
   clientId: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
+
+  // Configurations
+  templateKey: PropTypes.string,
+  clientToken: PropTypes.string,
+  email: PropTypes.string,
+  phone: PropTypes.string,
+
+  // Event handlers
+  onComplete: PropTypes.func.isRequired,
   onError: PropTypes.func,
   onDisplay: PropTypes.func,
   onStateChange: PropTypes.func,
-  baseUrl: PropTypes.string,
-  environment: PropTypes.oneOf(['sandbox', 'staging', 'production']),
-  overrideUrl: PropTypes.string,
-  version: PropTypes.string,
-  email: PropTypes.string,
-  phone: PropTypes.string,
-  continuation: PropTypes.string,
-  clientToken: PropTypes.string,
 }
 ```
 

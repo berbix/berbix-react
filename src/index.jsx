@@ -75,14 +75,15 @@ class BerbixVerify extends React.Component {
   }
 
   frameUrl() {
-    const { overrideUrl, version, clientId, role, email, phone, continuation, clientToken } = this.props;
+    const { overrideUrl, version, clientId, role, templateKey, email, phone, continuation, clientToken } = this.props;
     if (overrideUrl != null) {
       return overrideUrl;
     }
     const token = clientToken || continuation;
+    const template = templateKey || role;
     return (this.baseUrl() + '/' + version + '/verify') +
       ('?client_id=' + clientId) +
-      ('&role=' + role) +
+      (template ? '&template=' + template : '') +
       (email ? '&email=' + encodeURIComponent(email) : '') +
       (phone ? '&phone=' + encodeURIComponent(phone) : '') +
       (token ? '&client_token=' + token : '');
@@ -114,20 +115,29 @@ class BerbixVerify extends React.Component {
 }
 
 BerbixVerify.propTypes = {
-  onComplete: PropTypes.func.isRequired,
   clientId: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
+
+  // Configurations
+  clientToken: PropTypes.string,
+  templateKey: PropTypes.string,
+  email: PropTypes.string,
+  phone: PropTypes.string,
+
+  // Event handlers
+  onComplete: PropTypes.func.isRequired,
   onError: PropTypes.func,
   onDisplay: PropTypes.func,
   onStateChange: PropTypes.func,
+
+  // Internal use
   baseUrl: PropTypes.string,
-  environment: PropTypes.oneOf(['sandbox', 'staging', 'production']),
   overrideUrl: PropTypes.string,
+  environment: PropTypes.oneOf(['sandbox', 'staging', 'production']),
   version: PropTypes.string,
-  email: PropTypes.string,
-  phone: PropTypes.string,
+
+  // Deprecated
   continuation: PropTypes.string,
-  clientToken: PropTypes.string,
+  role: PropTypes.string,
 }
 
 BerbixVerify.defaultProps = {
