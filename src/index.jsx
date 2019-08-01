@@ -58,6 +58,7 @@ class BerbixVerify extends React.Component {
       onStateChange(data.payload);
     } else if (data.type === 'ERROR_RENDERED') {
       onError(data.payload);
+      this.setState({ height: 200 });
     }
   }
 
@@ -112,6 +113,7 @@ class BerbixVerify extends React.Component {
         }}
         allow="camera"
         scrolling="no"
+        referrerPolicy="no-referrer-when-downgrade"
       />
     );
   }
