@@ -19,7 +19,6 @@ class ExampleComponent extends React.Component {
     return (
       <BerbixVerify
         clientId="your_client_id"
-        templateKey="your_template_key"
         onComplete={event => {
           // send event.value to backend to fetch user verification data
         }}
