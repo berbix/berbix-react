@@ -100,7 +100,7 @@ class BerbixVerify extends React.Component {
     if (token) {
       options.push('client_token=' + token);
     }
-    return (this.baseUrl() + '/' + version + '/verify') + options.join('&');
+    return (this.baseUrl() + '/' + version + '/verify?') + options.join('&');
   }
 
   render() {
