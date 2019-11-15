@@ -11,14 +11,14 @@ This Berbix React library provides simple interfaces to interact with the Berbix
 ### Basic usage
 
 ```jsx
-import React from 'react';
-import BerbixVerify from 'berbix-react';
+import React from "react";
+import BerbixVerify from "berbix-react";
 
 class ExampleComponent extends React.Component {
   render() {
     return (
       <BerbixVerify
-        clientId="your_client_id"
+        clientToken="your_client_token"
         onComplete={event => {
           // send event.value to backend to fetch user verification data
         }}
@@ -33,11 +33,9 @@ class ExampleComponent extends React.Component {
 ```js
 BerbixVerify.propTypes = {
   // Required
-  clientId: PropTypes.string.isRequired,
+  clientToken: PropTypes.string,
 
   // Configurations
-  templateKey: PropTypes.string,
-  clientToken: PropTypes.string,
   email: PropTypes.string,
   phone: PropTypes.string,
 
@@ -45,8 +43,8 @@ BerbixVerify.propTypes = {
   onComplete: PropTypes.func.isRequired,
   onError: PropTypes.func,
   onDisplay: PropTypes.func,
-  onStateChange: PropTypes.func,
-}
+  onStateChange: PropTypes.func
+};
 ```
 
 ## Publishing

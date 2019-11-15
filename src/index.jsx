@@ -84,13 +84,23 @@ class BerbixVerify extends React.Component {
     }
     const token = clientToken || continuation;
     const template = templateKey || role;
-    return (this.baseUrl() + '/' + version + '/verify') +
-      ('?client_id=' + clientId) +
-      (template ? '&template=' + template : '') +
-      (email ? '&email=' + encodeURIComponent(email) : '') +
-      (phone ? '&phone=' + encodeURIComponent(phone) : '') +
-      (token ? '&client_token=' + token : '') +
-      ('&sdk=BerbixReact-' + SDK_VERSION);
+    var options = ['sdk=BerbixReact-' + SDK_VERSION];
+    if (clientId) {
+      options.push('client_id=' + clientId);
+    }
+    if (template) {
+      options.push('template=' + template);
+    }
+    if (email) {
+      options.push('email=' + encodeURIComponent(email));
+    }
+    if (phone) {
+      options.push('phone=' + encodeURIComponent(phone));
+    }
+    if (token) {
+      options.push('client_token=' + token);
+    }
+    return (this.baseUrl() + '/' + version + '/verify') + options.join('&');
   }
 
   render() {
@@ -120,13 +130,12 @@ class BerbixVerify extends React.Component {
 }
 
 BerbixVerify.propTypes = {
-  clientId: PropTypes.string.isRequired,
-
   // Configurations
   clientToken: PropTypes.string,
   templateKey: PropTypes.string,
   email: PropTypes.string,
   phone: PropTypes.string,
+  clientId: PropTypes.string,
 
   // Event handlers
   onComplete: PropTypes.func.isRequired,
