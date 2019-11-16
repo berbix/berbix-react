@@ -1,6 +1,6 @@
 {
   "name": "berbix-react",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "React SDK for the Berbix Verify flow",
   "main": "index.js",
   "scripts": {
@@ -29,8 +29,8 @@
     "react": "^16.8.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@babel/preset-env": "^7.4.4"
   }

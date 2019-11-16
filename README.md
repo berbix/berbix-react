@@ -28,6 +28,11 @@ class ExampleComponent extends React.Component {
 }
 ```
 
+The above will render an iframe inlined in your app.
+
+If you'd like to render the Berbix Verify Flow as a modal instead, set the `showInModal` bool
+prop, and pass a function to handle closure of the modal using `onCloseModal` props.
+
 ### PropTypes
 
 ```js
@@ -38,12 +43,14 @@ BerbixVerify.propTypes = {
   // Configurations
   email: PropTypes.string,
   phone: PropTypes.string,
+  showInModal: PropTypes.bool,
 
   // Event handlers
   onComplete: PropTypes.func.isRequired,
   onError: PropTypes.func,
   onDisplay: PropTypes.func,
-  onStateChange: PropTypes.func
+  onStateChange: PropTypes.func,
+  onCloseModal: PropTypes.func // If provided, onCloseModal below gets called when the user clicks the "close modal" button
 };
 ```
 
