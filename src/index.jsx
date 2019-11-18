@@ -56,7 +56,7 @@ class BerbixVerify extends React.Component {
       return;
     }
 
-    if (data.type === 'VERIFICATION_COMPLETE') {
+    if (data.type === "VERIFICATION_COMPLETE") {
       try {
         if (data.payload.success) {
           onComplete({ value: data.payload.code });
@@ -209,6 +209,7 @@ BerbixVerify.propTypes = {
   email: PropTypes.string,
   phone: PropTypes.string,
   clientId: PropTypes.string,
+  showInModal: PropTypes.bool,
 
   // Event handlers
   onComplete: PropTypes.func.isRequired,
