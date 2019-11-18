@@ -28,6 +28,15 @@ class BerbixVerify extends React.Component {
     }
   }
 
+  parseMessage(data) {
+    try {
+      return JSON.parse(data);
+    } catch (e) {
+      // Could not parse message, discarding as it's likely coming from extension or other source
+      return null;
+    }
+  }
+
   handleMessage(e) {
     const {
       onComplete,
@@ -41,8 +50,13 @@ class BerbixVerify extends React.Component {
       return;
     }
 
-    var data = JSON.parse(e.data);
-    if (data.type === "VERIFICATION_COMPLETE") {
+    var data = this.parseMessage(e.data);
+    if (data === null) {
+      // The message couldn't be parsed, so we skip this step
+      return;
+    }
+
+    if (data.type === 'VERIFICATION_COMPLETE') {
       try {
         if (data.payload.success) {
           onComplete({ value: data.payload.code });
