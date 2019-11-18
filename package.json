@@ -1,6 +1,6 @@
 {
   "name": "berbix-react",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "React SDK for the Berbix Verify flow",
   "main": "index.js",
   "scripts": {
