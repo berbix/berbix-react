@@ -163,11 +163,10 @@ class BerbixVerify extends React.Component {
       />
     );
     if (this.props.showInModal) {
-      const disp = Math.max(this.state.height, window.innerHeight);
-      const marginTop = disp > 500 ? (disp - 500) * 0.25 : 10;
+      const marginTop =
+        window.innerHeight > 500 ? (window.innerHeight - 500) * 0.25 : 10;
       return (
         <div
-          className="--berbix-overlay"
           style={{
             width: "100%",
             height: "100%",
@@ -183,12 +182,10 @@ class BerbixVerify extends React.Component {
           <div
             style={{
               margin: "0 auto",
-              top: "100px",
               width: "100%",
               maxWidth: "500px",
               maxHeight: "100%",
               overflow: "auto",
-              borderRadius: "5px",
               marginTop: marginTop
             }}
           >
