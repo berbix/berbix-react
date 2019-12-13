@@ -47,8 +47,6 @@ BerbixVerify.propTypes = {
   clientToken: PropTypes.string,
 
   // Configurations
-  email: PropTypes.string,
-  phone: PropTypes.string,
   showInModal: PropTypes.bool,
 
   // Event handlers
