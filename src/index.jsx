@@ -203,8 +203,6 @@ BerbixVerify.propTypes = {
   clientToken: PropTypes.string,
 
   // Configurations
-  email: PropTypes.string,
-  phone: PropTypes.string,
   clientId: PropTypes.string,
   showInModal: PropTypes.bool,
 
@@ -223,7 +221,9 @@ BerbixVerify.propTypes = {
 
   // Deprecated
   continuation: PropTypes.string,
-  role: PropTypes.string
+  role: PropTypes.string,
+  email: PropTypes.string,
+  phone: PropTypes.string
 };
 
 BerbixVerify.defaultProps = {
