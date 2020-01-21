@@ -19,8 +19,8 @@ class ExampleComponent extends React.Component {
     return (
       <BerbixVerify
         clientToken="your_client_token"
-        onComplete={event => {
-          // send event.value to backend to fetch user verification data
+        onComplete={() => {
+          // the user has completed the verification flow
         }}
       />
     );
