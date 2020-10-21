@@ -9,8 +9,9 @@ class BerbixVerify extends React.Component {
 
     this.state = {
       height: 0,
+      marginTop: 0,
       idx: 0,
-      show: true
+      show: true,
     };
 
     this.handleMessage = this.handleMessage.bind(this);
@@ -43,7 +44,7 @@ class BerbixVerify extends React.Component {
       onError,
       onDisplay,
       onStateChange,
-      onCloseModal
+      onCloseModal,
     } = this.props;
 
     if (e.origin !== this.baseUrl()) {
@@ -69,7 +70,10 @@ class BerbixVerify extends React.Component {
       this.setState({ show: false });
     } else if (data.type === "DISPLAY_IFRAME") {
       onDisplay();
-      this.setState({ height: data.payload.height });
+      this.setState({
+        height: data.payload.height,
+        marginTop: data.payload.margin || 0,
+      });
     } else if (data.type === "RESIZE_IFRAME") {
       this.setState({ height: data.payload.height });
     } else if (data.type === "RELOAD_IFRAME") {
@@ -110,7 +114,7 @@ class BerbixVerify extends React.Component {
       phone,
       continuation,
       clientToken,
-      showInModal
+      showInModal,
     } = this.props;
     if (overrideUrl != null) {
       return overrideUrl;
@@ -136,6 +140,11 @@ class BerbixVerify extends React.Component {
     if (showInModal) {
       options.push("modal=true");
     }
+    const height = Math.max(
+      document.documentElement.clientHeight,
+      window.innerHeight || 0
+    );
+    options.push("max_height=" + height);
     return this.baseUrl() + "/" + version + "/verify?" + options.join("&");
   }
 
@@ -155,7 +164,7 @@ class BerbixVerify extends React.Component {
           display: "block",
           width: "100%",
           height: this.state.height + "px",
-          overflow: "hidden"
+          overflow: "hidden",
         }}
         allow="camera"
         scrolling="no"
@@ -163,8 +172,6 @@ class BerbixVerify extends React.Component {
       />
     );
     if (this.props.showInModal) {
-      const marginTop =
-        window.innerHeight > 500 ? (window.innerHeight - 500) * 0.25 : 10;
       return (
         <div
           style={{
@@ -176,7 +183,7 @@ class BerbixVerify extends React.Component {
             right: 0,
             bottom: 0,
             backgroundColor: "rgba(0, 0, 0, 0.6)",
-            zIndex: 1000
+            zIndex: 1000,
           }}
         >
           <div
@@ -186,7 +193,7 @@ class BerbixVerify extends React.Component {
               maxWidth: "500px",
               maxHeight: "100%",
               overflow: "auto",
-              marginTop: marginTop
+              marginTop: this.state.marginTop + "px",
             }}
           >
             {iframe}
@@ -223,15 +230,15 @@ BerbixVerify.propTypes = {
   continuation: PropTypes.string,
   role: PropTypes.string,
   email: PropTypes.string,
-  phone: PropTypes.string
+  phone: PropTypes.string,
 };
 
 BerbixVerify.defaultProps = {
-  onError: function() {},
-  onDisplay: function() {},
-  onStateChange: function() {},
-  onCloseModal: function() {},
-  version: "v0"
+  onError: function () {},
+  onDisplay: function () {},
+  onStateChange: function () {},
+  onCloseModal: function () {},
+  version: "v0",
 };
 
 export default BerbixVerify;
