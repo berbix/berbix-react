@@ -4,7 +4,7 @@ set -ex
 
 VERSION=$(cat version)
 
-sed -i "" -e "s/const SDK_VERSION = '[[:digit:]]*\.[[:digit:]]*\.[[:digit:]]*';/const SDK_VERSION = '$VERSION';/g" src/index.jsx
+sed -i "" -e "s/const SDK_VERSION = \"[[:digit:]]*\.[[:digit:]]*\.[[:digit:]]*\";/const SDK_VERSION = \"$VERSION\";/g" src/index.jsx
 sed -i "" -e "s/  \"version\": \"[[:digit:]]*\.[[:digit:]]*\.[[:digit:]]*\",/  \"version\": \"$VERSION\",/g" package.json
 
 git add package.json src/index.jsx version
