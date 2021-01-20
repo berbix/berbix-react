@@ -14,3 +14,4 @@ git push --follow-tags
 
 npm run build
 npm publish
+npm run clean
