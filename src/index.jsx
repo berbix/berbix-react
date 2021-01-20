@@ -1,7 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 
-const SDK_VERSION = "0.0.13";
+const SDK_VERSION = "0.0.14";
 
 class BerbixVerify extends React.Component {
   constructor(props) {
