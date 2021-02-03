@@ -31,11 +31,11 @@
     "react": "^16.8.6"
   },
   "devDependencies": {
-    "@babel/cli": "7.12.10",
-    "@babel/core": "7.12.10",
-    "@babel/plugin-transform-react-jsx": "7.12.12",
-    "@babel/preset-env": "7.12.11",
-    "@babel/preset-typescript": "7.12.7",
+    "@babel/cli": "7.12.13",
+    "@babel/core": "7.12.13",
+    "@babel/plugin-transform-react-jsx": "7.12.13",
+    "@babel/preset-env": "7.12.13",
+    "@babel/preset-typescript": "7.12.13",
     "@types/prop-types": "15.7.3",
     "@types/react": "17.0.0",
     "rimraf": "3.0.2",
