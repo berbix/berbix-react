@@ -28,7 +28,7 @@
   "homepage": "https://github.com/berbix/berbix-react#readme",
   "dependencies": {
     "prop-types": "^15.7.2",
-    "react": "^16.8.6"
+    "react": "^17.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.13.0",
