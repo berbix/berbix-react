@@ -105,7 +105,6 @@ class BerbixVerify extends React.Component {
     const {
       overrideUrl,
       version,
-      continuation,
       clientToken,
       showInModal,
       showCloseModalButton
@@ -113,7 +112,7 @@ class BerbixVerify extends React.Component {
     if (overrideUrl != null) {
       return overrideUrl;
     }
-    const token = clientToken || continuation;
+    const token = clientToken;
     var options = ["sdk=BerbixReact-" + SDK_VERSION];
     if (token) {
       options.push("client_token=" + token);
@@ -207,9 +206,6 @@ BerbixVerify.propTypes = {
   baseUrl: PropTypes.string,
   overrideUrl: PropTypes.string,
   version: PropTypes.string,
-
-  // Deprecated
-  continuation: PropTypes.string,
 };
 
 BerbixVerify.defaultProps = {
