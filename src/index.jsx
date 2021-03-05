@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import * as React from "react";
 
-const SDK_VERSION = "0.0.14";
+const SDK_VERSION = "1.0.0";
 
 const MODAL_MODES = {
   WITHOUT_CLOSE_BUTTON: 1,
