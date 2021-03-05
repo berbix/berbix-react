@@ -52,6 +52,7 @@ BerbixVerify.propTypes = {
 
   // Configurations
   showInModal: PropTypes.bool,
+  showCloseModalButton: PropTypes.bool,
 
   // Event handlers
   onComplete: PropTypes.func.isRequired,

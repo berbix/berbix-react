@@ -191,7 +191,6 @@ BerbixVerify.propTypes = {
   clientToken: PropTypes.string,
 
   // Configurations
-  clientId: PropTypes.string,
   showInModal: PropTypes.bool,
   showCloseModalButton: PropTypes.bool,
 
