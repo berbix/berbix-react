@@ -112,10 +112,9 @@ class BerbixVerify extends React.Component {
     if (overrideUrl != null) {
       return overrideUrl;
     }
-    const token = clientToken;
-    var options = ["sdk=BerbixReact-" + SDK_VERSION];
-    if (token) {
-      options.push("client_token=" + token);
+    var options = [`sdk=BerbixReact-${SDK_VERSION}`];
+    if (clientToken) {
+      options.push(`client_token=${clientToken}`);
     }
     if (showInModal) {
       const modalMode = showCloseModalButton ? MODAL_MODES.WITH_CLOSE_BUTTON : MODAL_MODES.WITHOUT_CLOSE_BUTTON
@@ -125,7 +124,7 @@ class BerbixVerify extends React.Component {
       document.documentElement.clientHeight,
       window.innerHeight || 0
     );
-    options.push("max_height=" + height);
+    options.push(`max_height=${height}`);
     return this.baseUrl() + "/" + version + "/verify?" + options.join("&");
   }
 
