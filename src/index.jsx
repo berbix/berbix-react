@@ -134,6 +134,7 @@ class BerbixVerify extends React.Component {
     }
     const iframe = (
       <iframe
+        title="Berbix ID Verification"
         key={this.state.idx}
         src={this.frameUrl()}
         style={{
