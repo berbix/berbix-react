@@ -1,7 +1,12 @@
-import * as React from "react";
 import PropTypes from "prop-types";
+import * as React from "react";
 
-const SDK_VERSION = "0.0.14";
+const SDK_VERSION = "1.0.0";
+
+const MODAL_MODES = {
+  WITHOUT_CLOSE_BUTTON: 1,
+  WITH_CLOSE_BUTTON: 2,
+}
 
 class BerbixVerify extends React.Component {
   constructor(props) {
@@ -60,7 +65,7 @@ class BerbixVerify extends React.Component {
     if (data.type === "VERIFICATION_COMPLETE") {
       try {
         if (data.payload.success) {
-          onComplete({ value: data.payload.code });
+          onComplete();
         } else {
           onError(data);
         }
@@ -89,62 +94,37 @@ class BerbixVerify extends React.Component {
   }
 
   baseUrl() {
-    const { baseUrl, environment } = this.props;
+    const { baseUrl } = this.props;
     if (baseUrl != null) {
       return baseUrl;
     }
-    switch (environment) {
-      case "sandbox":
-        return "https://verify.sandbox.berbix.com";
-      case "staging":
-        return "https://verify.staging.berbix.com";
-      default:
-        return "https://verify.berbix.com";
-    }
+    return "https://verify.berbix.com";
   }
 
   frameUrl() {
     const {
       overrideUrl,
       version,
-      clientId,
-      role,
-      templateKey,
-      email,
-      phone,
-      continuation,
       clientToken,
       showInModal,
+      showCloseModalButton
     } = this.props;
     if (overrideUrl != null) {
       return overrideUrl;
     }
-    const token = clientToken || continuation;
-    const template = templateKey || role;
-    var options = ["sdk=BerbixReact-" + SDK_VERSION];
-    if (clientId) {
-      options.push("client_id=" + clientId);
-    }
-    if (template) {
-      options.push("template=" + template);
-    }
-    if (email) {
-      options.push("email=" + encodeURIComponent(email));
-    }
-    if (phone) {
-      options.push("phone=" + encodeURIComponent(phone));
-    }
-    if (token) {
-      options.push("client_token=" + token);
+    var options = [`sdk=BerbixReact-${SDK_VERSION}`];
+    if (clientToken) {
+      options.push(`client_token=${clientToken}`);
     }
     if (showInModal) {
-      options.push("modal=true");
+      const modalMode = showCloseModalButton ? MODAL_MODES.WITH_CLOSE_BUTTON : MODAL_MODES.WITHOUT_CLOSE_BUTTON
+      options.push(`modal=${modalMode}`);
     }
     const height = Math.max(
       document.documentElement.clientHeight,
       window.innerHeight || 0
     );
-    options.push("max_height=" + height);
+    options.push(`max_height=${height}`);
     return this.baseUrl() + "/" + version + "/verify?" + options.join("&");
   }
 
@@ -154,6 +134,7 @@ class BerbixVerify extends React.Component {
     }
     const iframe = (
       <iframe
+        title="Berbix ID Verification"
         key={this.state.idx}
         src={this.frameUrl()}
         style={{
@@ -210,8 +191,8 @@ BerbixVerify.propTypes = {
   clientToken: PropTypes.string,
 
   // Configurations
-  clientId: PropTypes.string,
   showInModal: PropTypes.bool,
+  showCloseModalButton: PropTypes.bool,
 
   // Event handlers
   onComplete: PropTypes.func.isRequired,
@@ -223,14 +204,7 @@ BerbixVerify.propTypes = {
   // Internal use
   baseUrl: PropTypes.string,
   overrideUrl: PropTypes.string,
-  environment: PropTypes.oneOf(["sandbox", "staging", "production"]),
   version: PropTypes.string,
-
-  // Deprecated
-  continuation: PropTypes.string,
-  role: PropTypes.string,
-  email: PropTypes.string,
-  phone: PropTypes.string,
 };
 
 BerbixVerify.defaultProps = {
