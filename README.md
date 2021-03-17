@@ -35,7 +35,7 @@ The above will render an iframe inlined in your app.
 If you'd like to render the Berbix Verify Flow as a modal, set the `showInModal` bool
 prop, and pass a function to handle closure of the modal using `onCloseModal` props.
 
-The modal will not close itself when the user clicks on the close button rendered within it.
+Set the `showCloseModalButton` prop if you'd like a close button to appear at the top of the modal. The modal will not close itself when the user clicks on the close button rendered within it.
 Rather, you should use the `onCloseModal` prop as a way to trigger the removal of the modal
 from the view (e.g. by removing the `BerbixVerify` component from the DOM).
 
