@@ -6,7 +6,7 @@ const SDK_VERSION = "1.0.0";
 const MODAL_MODES = {
   WITHOUT_CLOSE_BUTTON: 1,
   WITH_CLOSE_BUTTON: 2,
-}
+};
 
 class BerbixVerify extends React.Component {
   constructor(props) {
@@ -44,13 +44,8 @@ class BerbixVerify extends React.Component {
   }
 
   handleMessage(e) {
-    const {
-      onComplete,
-      onError,
-      onDisplay,
-      onStateChange,
-      onCloseModal,
-    } = this.props;
+    const { onComplete, onError, onDisplay, onStateChange, onCloseModal } =
+      this.props;
 
     if (e.origin !== this.baseUrl()) {
       return;
@@ -107,7 +102,7 @@ class BerbixVerify extends React.Component {
       version,
       clientToken,
       showInModal,
-      showCloseModalButton
+      showCloseModalButton,
     } = this.props;
     if (overrideUrl != null) {
       return overrideUrl;
@@ -117,7 +112,9 @@ class BerbixVerify extends React.Component {
       options.push(`client_token=${clientToken}`);
     }
     if (showInModal) {
-      const modalMode = showCloseModalButton ? MODAL_MODES.WITH_CLOSE_BUTTON : MODAL_MODES.WITHOUT_CLOSE_BUTTON
+      const modalMode = showCloseModalButton
+        ? MODAL_MODES.WITH_CLOSE_BUTTON
+        : MODAL_MODES.WITHOUT_CLOSE_BUTTON;
       options.push(`modal=${modalMode}`);
     }
     const height = Math.max(
@@ -198,8 +195,10 @@ BerbixVerify.propTypes = {
   onComplete: PropTypes.func.isRequired,
   onError: PropTypes.func,
   onDisplay: PropTypes.func,
-  onStateChange: PropTypes.func,
   onCloseModal: PropTypes.func,
+
+  // Deprecated
+  onStateChange: PropTypes.func,
 
   // Internal use
   baseUrl: PropTypes.string,

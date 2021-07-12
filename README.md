@@ -58,7 +58,6 @@ BerbixVerify.propTypes = {
   onComplete: PropTypes.func.isRequired,
   onError: PropTypes.func,
   onDisplay: PropTypes.func,
-  onStateChange: PropTypes.func,
   onCloseModal: PropTypes.func, // If provided, onCloseModal below gets called when the user clicks the "close modal" button
 };
 ```
