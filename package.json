@@ -26,9 +26,11 @@
     "url": "https://github.com/berbix/berbix-react/issues"
   },
   "homepage": "https://github.com/berbix/berbix-react#readme",
+  "peerDependencies": {
+    "react": "^16.8 || ^17"
+  },
   "dependencies": {
-    "prop-types": "^15.7.2",
-    "react": "^17.0.0"
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@babel/cli": "7.13.16",
