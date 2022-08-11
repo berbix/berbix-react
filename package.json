@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/berbix/berbix-react#readme",
   "peerDependencies": {
-    "react": "^16.8 || ^17"
+    "react": "^16.8 || ^17 || ^18"
   },
   "dependencies": {
     "prop-types": "^15.7.2"
